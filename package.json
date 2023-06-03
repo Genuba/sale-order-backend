@@ -7,7 +7,7 @@
     "start": "node build/app.js",
     "tsc": "tsc",
     "test": "jest",
-    "eslint": "eslint --fix ./*.ts"
+    "eslint": "eslint --ext ts,tsx src/*"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
