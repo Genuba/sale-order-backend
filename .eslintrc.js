@@ -18,6 +18,5 @@ module.exports = {
     ],
     "rules": {
         "no-console": "warn",
-        '@typescript-eslint/no-var-requires': 0,
     }
 }

@@ -1,3 +1,5 @@
+[![Deployment Pipeline](https://github.com/Genuba/sale-order-backend/actions/workflows/pipeline.yml/badge.svg)](https://github.com/Genuba/sale-order-backend/actions/workflows/pipeline.yml)
+
 # sale-order-backend
 This is the backend side of a technical test in Express for sale order system.
 
