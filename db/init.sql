@@ -1,9 +1,9 @@
-DROP TABLE IF EXISTS Product CASCADE;
-DROP TABLE IF EXISTS SaleOrder CASCADE;
-DROP TABLE IF EXISTS SaleOrderItem CASCADE;
+DROP TABLE IF EXISTS public."product" CASCADE;
+DROP TABLE IF EXISTS public."saleOrder" CASCADE;
+DROP TABLE IF EXISTS public."saleOrderItem" CASCADE;
 
 -- create tables
-CREATE TABLE Product(
+CREATE TABLE public."product"(
    id SERIAL PRIMARY KEY,
    name VARCHAR(100) NOT NULL,
    description VARCHAR(255) NOT NULL,
@@ -11,58 +11,58 @@ CREATE TABLE Product(
    manufacturer VARCHAR(100)
 );
 
-CREATE TABLE SaleOrder(
+CREATE TABLE public."saleOrder"(
    id SERIAL PRIMARY KEY,
-   custormer VARCHAR(100) NOT NULL,
+   customer VARCHAR(100) NOT NULL,
    date DATE NOT NULL,
    status VARCHAR(15)
 );
 
-CREATE TABLE SaleOrderItem(
+CREATE TABLE public."saleOrderItem"(
    id SERIAL PRIMARY KEY,
    quantity INT NOT NULL,
    unitPrice NUMERIC NOT NULL,
    totalPrice NUMERIC NOT NULL,
    productId INT NOT NULL,
    saleOrderId INT NOT NULL,
-   CONSTRAINT fk_Product
+   CONSTRAINT fk_product
       FOREIGN KEY(productId) 
-	  REFERENCES Product(id),
-   CONSTRAINT fk_SaleOrder
+	  REFERENCES product(id),
+   CONSTRAINT fk_saleOrder
       FOREIGN KEY(saleOrderId) 
-	  REFERENCES SaleOrder(id)
+	  REFERENCES saleOrder(id)
 );
 
 -- create init data
 
-INSERT INTO product(
+INSERT INTO public."product"(
 	name, description, category, manufacturer)
 	VALUES ('laptop', 'a laptop description', 'computer', 'Asus');
 
-INSERT INTO product(
+INSERT INTO public."product"(
 	name, description, category, manufacturer)
 	VALUES ('iphone10', 'a phone description', 'phone', 'Apple');
 
-INSERT INTO product(
+INSERT INTO public."product"(
 	name, description, category, manufacturer)
 	VALUES ('xiaomiA10', 'a phone description', 'phone', 'Xiaomi');
 
-INSERT INTO saleorder(
-	custormer, date, status)
+INSERT INTO public."saleOrder"(
+	customer, date, status)
 	VALUES ('Mario', '2023-06-06', 'Pending');
 
-INSERT INTO saleorder(
-	custormer, date, status)
+INSERT INTO public."saleOrder"(
+	customer, date, status)
 	VALUES ('Tienda 1', '2023-07-02', 'Pending');
 
-INSERT INTO saleorderitem(
-	quantity, unitprice, totalprice, productid, saleorderid)
-	VALUES ('1', '1000', '1000', 1, 1);
+INSERT INTO public."saleOrderItem"(
+	quantity, "unitPrice", "totalPrice", "productId", "saleOrderId")
+	VALUES ('1', 1000, 1000, 1, 1);
 
-INSERT INTO saleorderitem(
-	quantity, unitprice, totalprice, productid, saleorderid)
-	VALUES ('10', '2000', '20000', 2, 2);
+INSERT INTO public."saleOrderItem"(
+	quantity, "unitPrice", "totalPrice", "productId", "saleOrderId")
+	VALUES ('10', 2000, 20000, 2, 2);
 
-INSERT INTO saleorderitem(
-	quantity, unitprice, totalprice, productid, saleorderid)
-	VALUES ('5', '500', '2500', 3, 2);
+INSERT INTO public."saleOrderItem"(
+	quantity, "unitPrice", "totalPrice", "productId", "saleOrderId")
+	VALUES ('5', 500, 2500, 3, 2);
