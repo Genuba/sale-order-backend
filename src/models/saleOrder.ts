@@ -1,9 +1,9 @@
-import { Table, Model, DataType, Column, HasMany } from "sequelize-typescript";
-import { SaleOrderItem } from "./saleOrderItem";
+import { Table, Model, DataType, Column, HasMany } from 'sequelize-typescript';
+import { SaleOrderItem } from './saleOrderItem';
 
 @Table({
   timestamps: false,
-  tableName: "saleOrder",
+  tableName: 'saleOrder'
 })
 export class SaleOrder extends Model {
   @Column({ type: DataType.STRING, allowNull: false })
@@ -13,6 +13,6 @@ export class SaleOrder extends Model {
   @Column({ type: DataType.STRING, allowNull: false })
   status: string;
 
-  @HasMany(() => SaleOrderItem, "saleOrderId")
+  @HasMany(() => SaleOrderItem, 'saleOrderId')
   saleOrderItem: SaleOrderItem[];
 }

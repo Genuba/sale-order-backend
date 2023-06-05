@@ -3,32 +3,15 @@ import {
   Model,
   DataType,
   Column,
-  Scopes,
   ForeignKey,
-  BelongsTo,
-} from "sequelize-typescript";
-import { Product } from "./product";
-import { SaleOrder } from "./saleOrder";
+  BelongsTo
+} from 'sequelize-typescript';
+import { Product } from './product';
+import { SaleOrder } from './saleOrder';
 
-@Scopes(() => ({
-  withProduct: {
-    include: [
-      {
-        association: "product",
-      },
-    ],
-  },
-  withSaleOrder: {
-    include: [
-      {
-        association: "saleOrder",
-      },
-    ],
-  },
-}))
 @Table({
   timestamps: false,
-  tableName: "saleOrderItem",
+  tableName: 'saleOrderItem'
 })
 export class SaleOrderItem extends Model {
   @Column({ type: DataType.DECIMAL, allowNull: false })
@@ -38,14 +21,14 @@ export class SaleOrderItem extends Model {
   @Column({ type: DataType.DECIMAL, allowNull: false })
   totalPrice!: number;
 
-  @BelongsTo(() => Product, "productId")
+  @BelongsTo(() => Product, 'productId')
   product: Product;
 
   @ForeignKey(() => Product)
   @Column(DataType.INTEGER)
   productId!: number;
 
-  @BelongsTo(() => SaleOrder, "saleOrderId")
+  @BelongsTo(() => SaleOrder, 'saleOrderId')
   saleOrder: SaleOrder;
 
   @ForeignKey(() => SaleOrder)

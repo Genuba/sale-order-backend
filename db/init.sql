@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS product CASCADE;
-DROP TABLE IF EXISTS saleOrder CASCADE;
-DROP TABLE IF EXISTS saleOrderItem CASCADE;
+DROP TABLE IF EXISTS public."product" CASCADE;
+DROP TABLE IF EXISTS public."saleOrder" CASCADE;
+DROP TABLE IF EXISTS public."saleOrderItem" CASCADE;
 
 -- create tables
 CREATE TABLE public."product"(

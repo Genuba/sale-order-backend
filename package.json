@@ -7,7 +7,8 @@
     "start": "node build/app.js",
     "tsc": "tsc",
     "test": "jest",
-    "eslint": "eslint --ext ts,tsx src/*"
+    "eslint": "eslint --ext ts,tsx src/*",
+    "prettier-format": "prettier --config .prettierrc \"**/*.{ts,tsx}\" --write"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -22,6 +23,7 @@
     "sequelize-typescript": "^2.1.5"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/node": "^20.2.5",
     "@typescript-eslint/eslint-plugin": "^5.59.8",
