@@ -1,27 +1,14 @@
-import express from 'express';
-
-import saleOrderItemRouter from './routes/saleOrderItem';
-import saleOrderRouter from './routes/saleOrder';
 import connection from './db/config';
 
-import { json, urlencoded } from 'body-parser';
 import { initProduct, initSaleOrder, initSaleOrderItem } from './db/init';
 import { Product } from './models/product';
 import { SaleOrder } from './models/saleOrder';
 import { SaleOrderItem } from './models/saleOrderItem';
-
-import cors from 'cors';
-
-const app = express();
-app.use(json());
-app.use(urlencoded({ extended: true }));
+import createServer from './utils/server';
 
 const PORT = 5000;
 
-app.use(cors());
-
-app.use('/saleOrderItem', saleOrderItemRouter);
-app.use('/saleOrder', saleOrderRouter);
+const app = createServer();
 
 connection
   .sync({ force: true })
